@@ -208,13 +208,13 @@ class NPCEO {
 			return 'No prop';
 		}
 		
-		$prop = unserialize( $propValue );
-		if ( !$parser->isValidHalfParsedText( $prop ) ) {
+		return unserialize( $propValue );
+		/*if ( !$parser->isValidHalfParsedText( $prop ) ) {
                           // Probably won't ever happen.
                           return 'Invalid';
               	} else {
                           // Everything should be good.
                           return $parser->unserializeHalfParsedText( $prop );
-              	}
+              	}*/
 	}	
 }
