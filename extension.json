@@ -1,0 +1,28 @@
+{
+        "name": "NPCEO",
+        "author": [
+                "Juan Jose Andreu"
+        ],
+        "license-name": "Propietary",
+        "url": "https://npceo.wiki.landsend.games",
+        "descriptionmsg": "npceo-desc",
+        "type": "parserhook",
+        "requires": {
+                "MediaWiki": ">= 1.37.0"
+        },
+        "MessagesDirs": {
+                "NPCEO": [
+                        "i18n"
+                ]
+        },
+        "Hooks": {
+                "ParserFirstCallInit": [
+                        "MediaWiki\\Extension\\NPCEO\\NPCEO::init"
+                ]
+        },
+        "AutoloadNamespaces": {
+                "MediaWiki\\Extension\\NPCEO\\": "includes/"
+        },
+        "manifest_version": 2
+}
+
