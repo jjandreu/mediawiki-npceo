@@ -160,8 +160,55 @@ class NPCEO {
 
 
 
-	/*public function getCount( &$input, &$parser ) {
+	public function getWantedCount( &$input, &$parser ) {
+		$pageId = $parser->getTitle()->getArticleID();
+		$this->sInput =& $input;
+
+		$namespace = $this->get( 'namespace', 0, $parser );
+		$iNamespace = MediaWikiServices::getInstance()->getContentLanguage()->getNsIndex( $namespace );
+		if ( !$iNamespace ) {
+			if ( ( $arg ) || ( $arg === '0' ) ) {
+				$iNamespace = intval( $namespace );
+			} else {
+				$iNamespace = -1;
+			}
+		}
 		
-		Linker::link( $wlh, $label, [], [ 'target' => $title->getPrefixedText() ] )
-	}*/	
+		if ( $iNamespace < 0 ) {
+			return 0;
+		}
+		
+		$propName = "count_wanted_$iNamespace";
+		
+		$page = $this->get( 'page', null, $parser );
+		if ( $page ) { //other page
+			$title = Title::newFromText( $page );
+			if ( !$title || $title->getArticleID() === 0 ) {
+                          	return 0;
+              		}
+			
+			$dbl = MediaWikiServices::getInstance()->getDBLoadBalancer();
+			$dbr = $dbl->getConnection( DB_REPLICA );
+			$propValue = $dbr->selectField( 'page_props', // table to use
+				  'pp_value', // Field to select
+				  [ 'pp_page' => $title->getArticleID(), 'pp_propname' => $propName ], // where conditions
+				  __METHOD__
+			);
+		} else { //this page
+			$propValue = $parser->getOutput()->getProperty( $propName );
+		}
+		
+		if ( $propValue === false ) {
+			return 0;
+		}
+		
+		$prop = unserialize( $propValue );
+		if ( !$parser->isValidHalfParsedText( $prop ) ) {
+                          // Probably won't ever happen.
+                          return 0;
+              	} else {
+                          // Everything should be good.
+                          return $parser->unserializeHalfParsedText( $prop );
+              	}
+	}	
 }
