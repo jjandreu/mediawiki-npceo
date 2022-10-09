@@ -14,7 +14,8 @@ use Linker;
 
 class NPCEO {
         public static function init( Parser $parser ) {
-        	$parser->setHook( 'npceo-wantedpages', [ __CLASS__, 'renderPageList' ] );
+        	$parser->setHook( 'npceo-wanted-list', [ __CLASS__, 'renderList' ] );
+		$parser->setHook( 'npceo-wanted-count', [ __CLASS__, 'renderCount' ] );
         }
 
 	/**
@@ -26,7 +27,7 @@ class NPCEO {
 	 * @param PPFrame $frame
 	 * @return string
 	 */
-	public static function renderPageList( $input, array $args, Parser $parser, PPFrame $frame ) {
+	public static function renderList( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$f = new NPCEO();
 		return $f->parse( $input, $parser );
 	}
@@ -160,7 +161,7 @@ class NPCEO {
 
 
 
-	public function getWantedCount( &$input, &$parser ) {
+	public function renderCount( &$input, &$parser ) {
 		$pageId = $parser->getTitle()->getArticleID();
 		$this->sInput =& $input;
 
