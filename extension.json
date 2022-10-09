@@ -23,6 +23,9 @@
         "AutoloadNamespaces": {
                 "MediaWiki\\Extension\\NPCEO\\": "includes/"
         },
+        "Actions": {
+		"propsdump": "ActionDumpProps"
+	},
         "manifest_version": 2
 }
 
