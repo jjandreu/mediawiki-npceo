@@ -181,7 +181,7 @@ class NPCEO {
 		}
 		
 		if ( $iNamespace < 0 ) {
-			return 'NS:'.$iNamespace;
+			return 0;
 		}
 		
 		$propName = "count_wanted_$iNamespace";
@@ -190,7 +190,7 @@ class NPCEO {
 		if ( $page ) { //other page
 			$title = Title::newFromText( $page );
 			if ( !$title || $title->getArticleID() === 0 ) {
-                          	return 'No title';
+                          	return 0;
               		}
 			
 			$dbl = MediaWikiServices::getInstance()->getDBLoadBalancer();
@@ -205,7 +205,7 @@ class NPCEO {
 		}
 		
 		if ( $propValue === false ) {
-			return 'No prop';
+			return 0;
 		}
 		
 		return $propValue;
