@@ -170,10 +170,10 @@ class NPCEO {
 		$pageId = $parser->getTitle()->getArticleID();
 		$this->sInput =& $input;
 
-		$namespace = $this->get( 'namespace', 0, $parser );
+		$namespace = $this->get( 'namespace', '', $parser );
 		$iNamespace = MediaWikiServices::getInstance()->getContentLanguage()->getNsIndex( $namespace );
 		if ( !$iNamespace ) {
-			if ( ( $arg ) || ( $arg === '0' ) ) {
+			if ( ( $namespace ) || ( $namespace === '0' ) ) {
 				$iNamespace = intval( $namespace );
 			} else {
 				$iNamespace = -1;
