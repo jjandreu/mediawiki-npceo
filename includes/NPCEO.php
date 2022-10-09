@@ -162,6 +162,11 @@ class NPCEO {
 
 
 	public static function renderCount( $input, array $args, Parser $parser, PPFrame $frame ) {
+		$f = new NPCEO();
+		return $f->parseCount( $input, $parser );
+	}
+	
+	public static function parseCount( &$input, &$parser ) {
 		$pageId = $parser->getTitle()->getArticleID();
 		$this->sInput =& $input;
 
