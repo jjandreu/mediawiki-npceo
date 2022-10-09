@@ -181,7 +181,7 @@ class NPCEO {
 		}
 		
 		if ( $iNamespace < 0 ) {
-			return 0;
+			return 'NS:'.$iNamespace;
 		}
 		
 		$propName = "count_wanted_$iNamespace";
@@ -190,7 +190,7 @@ class NPCEO {
 		if ( $page ) { //other page
 			$title = Title::newFromText( $page );
 			if ( !$title || $title->getArticleID() === 0 ) {
-                          	return 0;
+                          	return 'No title';
               		}
 			
 			$dbl = MediaWikiServices::getInstance()->getDBLoadBalancer();
@@ -205,13 +205,13 @@ class NPCEO {
 		}
 		
 		if ( $propValue === false ) {
-			return 0;
+			return 'No prop';
 		}
 		
 		$prop = unserialize( $propValue );
 		if ( !$parser->isValidHalfParsedText( $prop ) ) {
                           // Probably won't ever happen.
-                          return 0;
+                          return 'Invalid';
               	} else {
                           // Everything should be good.
                           return $parser->unserializeHalfParsedText( $prop );
