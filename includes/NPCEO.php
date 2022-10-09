@@ -166,7 +166,7 @@ class NPCEO {
 		return $f->parseCount( $input, $parser );
 	}
 	
-	public static function parseCount( &$input, &$parser ) {
+	public function parseCount( &$input, &$parser ) {
 		$pageId = $parser->getTitle()->getArticleID();
 		$this->sInput =& $input;
 
