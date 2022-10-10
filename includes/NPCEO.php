@@ -169,6 +169,8 @@ class NPCEO {
 	public function parseCount( &$input, &$parser ) {
 		$pageId = $parser->getTitle()->getArticleID();
 		$this->sInput =& $input;
+		
+		$parser->getOutput()->updateCacheExpiry( 0 );
 
 		$namespace = $this->get( 'namespace', '', $parser );
 		$iNamespace = MediaWikiServices::getInstance()->getContentLanguage()->getNsIndex( $namespace );
