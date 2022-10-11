@@ -235,6 +235,6 @@ class NPCEO {
 			}
 		}
 		$ret = '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
-		return [ $ret, 'noparse' => false, 'isHTML' => true ];
+		$parser->insertStripItem( $ret, $parser->mStripState );
 	}	
 }
