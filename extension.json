@@ -20,6 +20,9 @@
                         "MediaWiki\\Extension\\NPCEO\\NPCEO::init"
                 ]
         },
+	"ExtensionMessagesFiles": {
+		"NPCEOExtensionMagic": "NPCEOExtension.i18n.php"
+	},
         "AutoloadNamespaces": {
                 "MediaWiki\\Extension\\NPCEO\\": "includes/"
         },
