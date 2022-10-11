@@ -235,6 +235,6 @@ class NPCEO {
 			}
 		}
 		$ret = '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
-		return $parser->replaceVariables( $ret )
+		return $parser->replaceVariables( $ret );
 	}	
 }
