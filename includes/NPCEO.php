@@ -16,7 +16,7 @@ class NPCEO {
         public static function init( Parser $parser ) {
         	$parser->setHook( 'npceo-wanted-list', [ __CLASS__, 'renderList' ] );
 		$parser->setHook( 'npceo-wanted-count', [ __CLASS__, 'renderCount' ] );
-		$parser->setHook( 'npceo-model', [ __CLASS__, 'renderModel' ] );
+		$parser->setFunctionHook( 'npceo-model', [ __CLASS__, 'renderModel' ] );
         }
 
 	/**
@@ -233,18 +233,14 @@ class NPCEO {
               	}*/
 	}	
 	
-	public static function renderModel( $input, array $args, Parser $parser, PPFrame $frame ) {
+	public static function renderModel( Parser $parser, $param1 = '' ) {
 		$f = new NPCEO();
-		return $f->parseModel( $input, $parser );
+		return $f->parseModel( $parser, $param1 );
 	}
 	
-	public function parseModel( &$input, &$parser ) {
-		$this->sInput =& $input;
-		
-		$arg = $this->get(null, null, $parser );
-		
+	public function parseModel( &$parser, $param1 = '' ) {
 		$lines = [];
-		foreach(explode("\n", $arg) as $line) {
+		foreach(explode("\n", $param1) as $line) {
 			if(!empty($line = trim($line))) {
 				$lines[] = $line;
 			}
