@@ -16,7 +16,7 @@ class NPCEO {
         public static function init( Parser $parser ) {
         	$parser->setHook( 'npceo-wanted-list', [ __CLASS__, 'renderList' ] );
 		$parser->setHook( 'npceo-wanted-count', [ __CLASS__, 'renderCount' ] );
-		$parser->setFunctionHook( 'npceomodel', [ __CLASS__, 'renderModel' ] );
+		$parser->setFunctionHook( 'model', [ __CLASS__, 'renderModel' ] );
         }
 
 	/**
