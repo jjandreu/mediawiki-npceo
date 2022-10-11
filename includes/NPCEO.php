@@ -41,9 +41,20 @@ class NPCEO {
 	 * @param Parser|null $parser
 	 * @return string
 	 */
-	public function get( $name, $value = null, $parser = null ) {
-		if ( preg_match( "/^\s*$name\s*=\s*(.*)/mi", $this->sInput, $matches ) ) {
-			$arg = trim( $matches[1] );
+	public function get( $name = null, $value = null, $parser = null ) {
+		if($name) {
+			if ( preg_match( "/^\s*$name\s*=\s*(.*)/mi", $this->sInput, $matches ) ) {
+				$arg = trim( $matches[1] );
+				if ( is_int( $value ) ) {
+					return intval( $arg );
+				} elseif ( $parser === null ) {
+					return htmlspecialchars( $arg );
+				} else {
+					return $parser->replaceVariables( $arg );
+				}
+			}
+		} else {
+			$arg = trim( $this->sInput );
 			if ( is_int( $value ) ) {
 				return intval( $arg );
 			} elseif ( $parser === null ) {
@@ -52,6 +63,7 @@ class NPCEO {
 				return $parser->replaceVariables( $arg );
 			}
 		}
+		
 		return $value;
 	}
 
@@ -229,7 +241,7 @@ class NPCEO {
 	public function parseModel( &$input, &$parser ) {
 		$this->sInput =& $input;
 		
-		$arg = $this->get( 'model', '', $parser );
+		$arg = $this->get(null, null, $parser );
 		
 		$lines = [];
 		foreach(explode("\n", $arg) as $line) {
