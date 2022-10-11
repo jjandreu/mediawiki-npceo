@@ -235,6 +235,6 @@ class NPCEO {
 				$lines[] = $line;
 			}
 		}
-		return ['<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>', 'noparse' => false ];
+		return ['<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>', 'noparse' => true, 'isHTML' => true ];
 	}	
 }
