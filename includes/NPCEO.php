@@ -235,6 +235,6 @@ class NPCEO {
 			}
 		}
 		$ret = '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
-		return [$parser->parse($ret)->getText(), 'isHtml' => true];
+		return [ $ret, 'noparse' => false, 'isHTML' => true ];
 	}	
 }
