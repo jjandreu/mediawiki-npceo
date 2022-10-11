@@ -228,13 +228,14 @@ class NPCEO {
 	
 	public function parseModel( &$input, &$parser ) {
 		$this->sInput =& $input;
+		$model = $parser->replaceVariables($this->sInput)
+		
 		$lines = [];
-		foreach(explode("\n", $this->sInput) as $line) {
+		foreach(explode("\n", $model) as $line) {
 			if(!empty($line = trim($line))) {
 				$lines[] = $line;
 			}
 		}
-		$ret = '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
-		return $parser->replaceVariables( $ret );
+		return '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
 	}	
 }
