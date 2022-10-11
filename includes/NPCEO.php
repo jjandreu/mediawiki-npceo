@@ -14,9 +14,9 @@ use Linker;
 
 class NPCEO {
         public static function init( Parser $parser ) {
-        	$parser->setHook( 'npceo-wanted-list', [ __CLASS__, 'renderList' ] );
-		$parser->setHook( 'npceo-wanted-count', [ __CLASS__, 'renderCount' ] );
-		$parser->setFunctionHook( 'model', [ __CLASS__, 'renderModel' ] );
+        	$parser->setHook( 'npceo-wanted-list', [ self::class, 'renderList' ] );
+		$parser->setHook( 'npceo-wanted-count', [ self::class, 'renderCount' ] );
+		$parser->setFunctionHook( 'model', [ self::class, 'renderModel' ] );
         }
 
 	/**
