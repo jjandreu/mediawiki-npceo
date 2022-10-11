@@ -230,7 +230,7 @@ class NPCEO {
 		$this->sInput =& $input;
 		$lines = [];
 		foreach(explode("\n", $this->sInput) as $line) {
-			if($line = trim($line) && !empty($line)) {
+			if(!empty($line = trim($line))) {
 				$lines[] = $line;
 			}
 		}
