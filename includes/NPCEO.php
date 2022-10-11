@@ -228,7 +228,7 @@ class NPCEO {
 	
 	public function parseModel( &$input, &$parser ) {
 		$this->sInput =& $input;
-		$model = $parser->replaceVariables($this->sInput)
+		$model = $parser->replaceVariables($this->sInput);
 		
 		$lines = [];
 		foreach(explode("\n", $model) as $line) {
