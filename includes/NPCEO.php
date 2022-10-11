@@ -234,6 +234,6 @@ class NPCEO {
 				$lines[] = $line;
 			}
 		}
-		return implode('', $lines);
+		return '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
 	}	
 }
