@@ -245,8 +245,6 @@ class NPCEO {
 				$lines[] = $line;
 			}
 		}
-		$merged = implode('', $lines);
-		$json = json_encode(json_decode($merged, true));
-		return '<span class="npceo-model" style="display: none">' . $json . '</span>';
+		return '<span class="npceo-model" style="display: none">' . implode('', $lines) . '</span>';
 	}	
 }
